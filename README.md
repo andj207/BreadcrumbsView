@@ -27,7 +27,6 @@ First, add it in your root build.gradle at the end of repositories:
 ```gradle
 allprojects {
 	repositories {
-		...
 		maven { url 'https://jitpack.io' }
 	}
 }
@@ -37,7 +36,7 @@ Add the dependency to your app modules:
 
 ```gradle
 dependencies {
-    compile 'moe.feng:BreadcrumbsView:latest-version'
+    	implementation 'com.github.HamidrezaAmz:BreadcrumbsView:0.2.3'
 }
 ```
 
