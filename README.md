@@ -5,9 +5,12 @@
 
 ## New Futures
 Custom Font Added
+
 Custom Text Size Added
+
 Custom Text Color ( Selected,UnSelected ) Added
 
+Min API **17**
 
 <img src="./.readme/breadcrumbsview.png" width="30%"/>
 
