@@ -59,6 +59,7 @@ For example:
 	app:popupTheme="@style/AppTheme.PopupOverlay"
 	app:textColorSelected="@color/colorSelected"
         app:textColorUnSelected="@color/colorUnSelected"
+	app:isRtl="false"
         app:textSizeCustom="12sp" />
 ```
 
