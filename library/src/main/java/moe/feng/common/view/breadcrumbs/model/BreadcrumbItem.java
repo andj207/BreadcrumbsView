@@ -1,11 +1,12 @@
 package moe.feng.common.view.breadcrumbs.model;
 
 import android.os.Parcel;
-import android.support.annotation.NonNull;
 
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+
+import androidx.annotation.NonNull;
 
 public class BreadcrumbItem implements IBreadcrumbItem<String> {
 

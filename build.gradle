@@ -1,16 +1,14 @@
 ext {
-	supportLibraryVersion = '28.0.0'
-
-	minSdkVersion = 17
-	targetSdkVersion = 28
-	versionCode = 8
-	versionName = "0.2.3"
+    minSdkVersion = 17
+    targetSdkVersion = 28
+    versionCode = 9
+    versionName = "0.2.4"
 }
 
 buildscript {
     repositories {
         jcenter()
-	    google()
+        google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.1'
@@ -20,7 +18,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-	    google()
+        google()
         maven { url 'https://jitpack.io' }
     }
 }

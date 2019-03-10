@@ -1,9 +1,10 @@
 package moe.feng.common.view.breadcrumbs.model;
 
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
 
 public interface IBreadcrumbItem<E> extends Parcelable, Iterable {
 
@@ -33,7 +34,8 @@ public interface IBreadcrumbItem<E> extends Parcelable, Iterable {
      *
      * @return The selected item
      */
-    @NonNull E getSelectedItem();
+    @NonNull
+    E getSelectedItem();
 
     /**
      * Check if there are other items
@@ -52,7 +54,7 @@ public interface IBreadcrumbItem<E> extends Parcelable, Iterable {
     /**
      * Set a new items list with selecting a item
      *
-     * @param items Items list
+     * @param items         Items list
      * @param selectedIndex The selected item index
      */
     void setItems(@NonNull List<E> items, int selectedIndex);
