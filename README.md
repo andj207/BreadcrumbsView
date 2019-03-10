@@ -14,7 +14,7 @@ Min API **17**
 
 Migrated To **AndroidX**
 
-Support Directions ( LTR,RTL )
+Support Directions ( LTR, RTL )
 
 
 <img src="./.readme/breadcrumbsview.png" width="30%"/>
