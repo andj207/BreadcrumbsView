@@ -3,9 +3,18 @@
 [![](https://jitpack.io/v/HamidrezaAmz/BreadcrumbsView.svg)](https://jitpack.io/#HamidrezaAmz/BreadcrumbsView)
 [![API](https://img.shields.io/badge/API-17%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=17)
 
+## New Futures
+Custom Font Added
+
+Custom Text Size Added
+
+Custom Text Color ( Selected,UnSelected ) Added
+
+Min API **17**
+
 <img src="./.readme/breadcrumbsview.png" width="30%"/>
 
-Material Design Breadcrumbs Navigation Widget on Android (SDK 19+, Maybe can be lower)
+Material Design Breadcrumbs Navigation Widget on Android
 
 <img src="./.readme/screenshot-demo.png" width="50%"/>
 
@@ -18,7 +27,6 @@ First, add it in your root build.gradle at the end of repositories:
 ```gradle
 allprojects {
 	repositories {
-		...
 		maven { url 'https://jitpack.io' }
 	}
 }
@@ -28,7 +36,7 @@ Add the dependency to your app modules:
 
 ```gradle
 dependencies {
-    compile 'moe.feng:BreadcrumbsView:latest-version'
+    	implementation 'com.github.HamidrezaAmz:BreadcrumbsView:0.2.3'
 }
 ```
 
@@ -39,17 +47,14 @@ Place a `BreadcrumbsView` to where you want in your layout xml.
 For example:
 
 ```xml
-<android.support.design.widget.AppBarLayout...>
-
-	<android.support.v7.widget.Toolbar.../>
-
-	<moe.feng.common.view.breadcrumbs.BreadcrumbsView
-		android:id="@+id/breadcrumbs_view"
-		android:layout_width="match_parent"
-		android:layout_height="?attr/actionBarSize"
-		app:popupTheme="@style/AppTheme.PopupOverlay"/>
-
-</android.support.design.widget.AppBarLayout>
+<moe.feng.common.view.breadcrumbs.BreadcrumbsView
+	android:id="@+id/breadcrumbs_view"
+	android:layout_width="match_parent"
+	android:layout_height="?attr/actionBarSize"
+	app:popupTheme="@style/AppTheme.PopupOverlay"
+	app:textColorSelected="@color/colorSelected"
+        app:textColorUnSelected="@color/colorUnSelected"
+        app:textSizeCustom="12sp" />
 ```
 
 ### Add/Remove `BreadcrumbItem`
