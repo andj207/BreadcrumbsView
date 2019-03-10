@@ -38,7 +38,7 @@ Add the dependency to your app modules:
 
 ```gradle
 dependencies {
-    	implementation 'com.github.HamidrezaAmz:BreadcrumbsView:0.2.3'
+    	implementation 'com.github.HamidrezaAmz:BreadcrumbsView:0.2.4'
 }
 ```
 
