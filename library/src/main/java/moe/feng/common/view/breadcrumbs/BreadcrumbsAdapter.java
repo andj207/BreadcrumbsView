@@ -150,7 +150,7 @@ class BreadcrumbsAdapter extends RecyclerView.Adapter<BreadcrumbsAdapter.ItemHol
 
         ArrowIconHolder(View itemView) {
             super(itemView);
-            Drawable normalDrawable = getContext().getResources().getDrawable(R.drawable.ic_chevron_right_black_24dp);
+            Drawable normalDrawable = getContext().getResources().getDrawable(R.drawable.ic_fiber_manual_record_black_24dp);
             Drawable wrapDrawable = DrawableCompat.wrap(normalDrawable);
             if (mtextColorUnSelected != -1)
                 DrawableCompat.setTint(wrapDrawable, mtextColorUnSelected);

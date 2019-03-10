@@ -30,8 +30,9 @@ public class BreadcrumbsView extends FrameLayout {
      */
     private int mPopupThemeId = -1;
     private int mTextColorSelected = -1;
-    private int mtextColorUnSelected = -1;
+    private int mTextColorUnSelected = -1;
     private int mTextSizeCustom = -1;
+    private boolean isRtl = false;
 
     private static final String KEY_SUPER_STATES = BuildConfig.APPLICATION_ID + ".superStates";
     private static final String KEY_BREADCRUMBS = BuildConfig.APPLICATION_ID + ".breadcrumbs";
@@ -51,8 +52,9 @@ public class BreadcrumbsView extends FrameLayout {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BreadcrumbsView, defStyleAttr, 0);
             mPopupThemeId = a.getResourceId(R.styleable.BreadcrumbsView_popupTheme, -1);
             mTextColorSelected = a.getColor(R.styleable.BreadcrumbsView_textColorSelected, -1);
-            mtextColorUnSelected = a.getColor(R.styleable.BreadcrumbsView_textColorUnSelected, -1);
+            mTextColorUnSelected = a.getColor(R.styleable.BreadcrumbsView_textColorUnSelected, -1);
             mTextSizeCustom = a.getDimensionPixelSize(R.styleable.BreadcrumbsView_textSizeCustom, -1);
+            isRtl = a.getBoolean(R.styleable.BreadcrumbsView_isRtl, false);
             a.recycle();
         }
 
@@ -70,8 +72,7 @@ public class BreadcrumbsView extends FrameLayout {
             mRecyclerView = new RecyclerView(getContext());
 
             // Create Horizontal LinearLayoutManager
-            LinearLayoutManager layoutManager = new LinearLayoutManager(
-                    getContext(), LinearLayoutManager.HORIZONTAL, ViewUtils.isRtlLayout(getContext()));
+            LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, isRtl);
             mRecyclerView.setLayoutManager(layoutManager);
             mRecyclerView.setOverScrollMode(OVER_SCROLL_NEVER);
 
@@ -80,7 +81,7 @@ public class BreadcrumbsView extends FrameLayout {
         }
         // Init Adapter
         if (mAdapter == null) {
-            mAdapter = new BreadcrumbsAdapter(this, mTextColorSelected, mtextColorUnSelected, mTextSizeCustom);
+            mAdapter = new BreadcrumbsAdapter(this, mTextColorSelected, mTextColorUnSelected, mTextSizeCustom);
             if (mPopupThemeId != -1) {
                 mAdapter.setPopupThemeId(mPopupThemeId);
             }

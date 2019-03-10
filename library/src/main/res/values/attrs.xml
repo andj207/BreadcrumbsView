@@ -6,6 +6,7 @@
         <attr name="textColorSelected" format="reference|integer" />
         <attr name="textColorUnSelected" format="reference|integer" />
         <attr name="textSizeCustom" format="dimension" />
+        <attr name="isRtl" format="boolean" />
     </declare-styleable>
 
 </resources>
