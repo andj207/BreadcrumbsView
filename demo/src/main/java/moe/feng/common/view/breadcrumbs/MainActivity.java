@@ -39,9 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         mBreadcrumbsView = findViewById(R.id.breadcrumbs_view);
         mBreadcrumbsView.setItems(new ArrayList<>(Arrays.asList(
-                BreadcrumbItem.createSimpleItem("Root Path"),
-                createItem("سلام 1"),
-                createItem("سلام 2")
+                BreadcrumbItem.createSimpleItem("Root Path")
         )));
         mBreadcrumbsView.setCallback(new DefaultBreadcrumbsCallback<BreadcrumbItem>() {
             @Override

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<declare-styleable name="BreadcrumbsView">
-		<attr name="popupTheme"/>
-	</declare-styleable>
+    <declare-styleable name="BreadcrumbsView">
+        <attr name="popupTheme" />
+        <attr name="textColorSelected" format="reference|integer" />
+        <attr name="textColorUnSelected" format="reference|integer" />
+        <attr name="textSizeCustom" format="dimension" />
+    </declare-styleable>
 
 </resources>
