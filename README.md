@@ -1,7 +1,7 @@
 # BreadcrumbsView
 
 [![](https://jitpack.io/v/HamidrezaAmz/BreadcrumbsView.svg)](https://jitpack.io/#HamidrezaAmz/BreadcrumbsView)
-(https://github.com/fython/BreadcrumbsView/wiki/%E4%B8%AD%E6%96%87-README.md)
+[![API](https://img.shields.io/badge/API-17%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=17)
 
 <img src="./.readme/breadcrumbsview.png" width="30%"/>
 
