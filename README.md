@@ -3,9 +3,15 @@
 [![](https://jitpack.io/v/HamidrezaAmz/BreadcrumbsView.svg)](https://jitpack.io/#HamidrezaAmz/BreadcrumbsView)
 [![API](https://img.shields.io/badge/API-17%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=17)
 
+## New Futures
+Custom Font Added
+Custom Text Size Added
+Custom Text Color ( Selected,UnSelected ) Added
+
+
 <img src="./.readme/breadcrumbsview.png" width="30%"/>
 
-Material Design Breadcrumbs Navigation Widget on Android (SDK 19+, Maybe can be lower)
+Material Design Breadcrumbs Navigation Widget on Android
 
 <img src="./.readme/screenshot-demo.png" width="50%"/>
 
