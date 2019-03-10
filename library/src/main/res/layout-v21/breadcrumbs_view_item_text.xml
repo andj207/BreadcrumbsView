@@ -9,5 +9,4 @@
     android:fontFamily="@font/app_font"
     android:gravity="center_vertical"
     android:padding="16dp"
-    android:textAppearance="?android:attr/textAppearanceMedium"
     tools:text="Example" />

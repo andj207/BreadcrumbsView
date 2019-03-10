@@ -2,7 +2,6 @@ package moe.feng.common.view.breadcrumbs;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -24,7 +23,6 @@ import java.util.Map;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import moe.feng.common.view.breadcrumbs.model.IBreadcrumbItem;
@@ -136,23 +134,13 @@ class BreadcrumbsAdapter extends RecyclerView.Adapter<BreadcrumbsAdapter.ItemHol
             button.setTextColor(ViewUtils.getColorFromAttr(getContext(), getAdapterPosition() == getItemCount() - 1 ? android.R.attr.textColorPrimary : android.R.attr.textColorSecondary));
 
             if (mTextColorSelected != -1)
-                button.setTextColor(ViewUtils.getColorFromAttr(getContext(),
-                        getAdapterPosition() == getItemCount() - 1
-                                ? mTextColorSelected : mtextColorUnSelected));
+                button.setTextColor(getAdapterPosition() == getItemCount() - 1 ? mTextColorSelected : mtextColorUnSelected);
             else
-                button.setTextColor(ViewUtils.getColorFromAttr(getContext(),
-                        getAdapterPosition() == getItemCount() - 1
-                                ? android.R.attr.textColorPrimary : android.R.attr.textColorSecondary)
-                );
+                button.setTextColor(ViewUtils.getColorFromAttr(getContext(), getAdapterPosition() == getItemCount() - 1 ? android.R.attr.textColorPrimary : android.R.attr.textColorSecondary));
 
             if (mTextSize != -1)
                 button.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTextSize);
         }
-
-        public float convertSpToPixels(float sp, Context context) {
-            return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, context.getResources().getDisplayMetrics());
-        }
-
     }
 
     class ArrowIconHolder extends ItemHolder<IBreadcrumbItem> {
@@ -164,7 +152,10 @@ class BreadcrumbsAdapter extends RecyclerView.Adapter<BreadcrumbsAdapter.ItemHol
             super(itemView);
             Drawable normalDrawable = getContext().getResources().getDrawable(R.drawable.ic_chevron_right_black_24dp);
             Drawable wrapDrawable = DrawableCompat.wrap(normalDrawable);
-            DrawableCompat.setTint(wrapDrawable, ViewUtils.getColorFromAttr(getContext(), android.R.attr.textColorSecondary));
+            if (mtextColorUnSelected != -1)
+                DrawableCompat.setTint(wrapDrawable, mtextColorUnSelected);
+            else
+                DrawableCompat.setTint(wrapDrawable, ViewUtils.getColorFromAttr(getContext(), android.R.attr.textColorSecondary));
             imageButton = (ImageButton) itemView;
             imageButton.setImageDrawable(wrapDrawable);
             imageButton.setOnClickListener(new View.OnClickListener() {
@@ -182,7 +173,6 @@ class BreadcrumbsAdapter extends RecyclerView.Adapter<BreadcrumbsAdapter.ItemHol
             createPopupWindow();
         }
 
-        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
         @Override
         public void setItem(@NonNull IBreadcrumbItem item) {
             super.setItem(item);
@@ -197,7 +187,7 @@ class BreadcrumbsAdapter extends RecyclerView.Adapter<BreadcrumbsAdapter.ItemHol
                 ListAdapter adapter = new SimpleAdapter(getPopupThemedContext(), list, R.layout.breadcrumbs_view_dropdown_item, new String[]{"text"}, new int[]{android.R.id.text1});
                 popupWindow.setAdapter(adapter);
                 popupWindow.setWidth(ViewUtils.measureContentWidth(getPopupThemedContext(), adapter));
-                imageButton.setOnTouchListener(popupWindow.createDragToOpenListener(imageButton));
+                // imageButton.setOnTouchListener(popupWindow.createDragToOpenListener(imageButton));
             } else {
                 imageButton.setOnTouchListener(null);
             }
