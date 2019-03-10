@@ -12,6 +12,8 @@ Custom Text Color ( Selected,UnSelected ) Added
 
 Min API **17**
 
+Migrated To **AndroidX**
+
 <img src="./.readme/breadcrumbsview.png" width="30%"/>
 
 Material Design Breadcrumbs Navigation Widget on Android
