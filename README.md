@@ -47,17 +47,14 @@ Place a `BreadcrumbsView` to where you want in your layout xml.
 For example:
 
 ```xml
-<android.support.design.widget.AppBarLayout...>
-
-	<android.support.v7.widget.Toolbar.../>
-
 	<moe.feng.common.view.breadcrumbs.BreadcrumbsView
 		android:id="@+id/breadcrumbs_view"
 		android:layout_width="match_parent"
 		android:layout_height="?attr/actionBarSize"
-		app:popupTheme="@style/AppTheme.PopupOverlay"/>
-
-</android.support.design.widget.AppBarLayout>
+		app:popupTheme="@style/AppTheme.PopupOverlay"
+		app:textColorSelected="@color/colorSelected"
+            	app:textColorUnSelected="@color/colorUnSelected"
+            	app:textSizeCustom="12sp" />
 ```
 
 ### Add/Remove `BreadcrumbItem`
