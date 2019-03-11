@@ -4,17 +4,17 @@
 [![API](https://img.shields.io/badge/API-17%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=17)
 
 ## New Futures
-Custom Font Added
+✔ Custom Font Added
 
-Custom Text Size Added
+✔ Custom Text Size Added
 
-Custom Text Color ( Selected,UnSelected ) Added
+✔ Custom Text Color ( Selected,UnSelected ) Added
 
-Min API **17**
+✔ Min API **17**
 
-Migrated To **AndroidX**
+✔ Migrated To **AndroidX**
 
-Support Directions ( LTR, RTL )
+✔ Support Directions ( LTR, RTL )
 
 
 <img src="./.readme/breadcrumbsview.png" width="30%"/>
