@@ -3,7 +3,6 @@ package moe.feng.common.view.breadcrumbs;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.TypedValue;
-import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.graphics.drawable.DrawableCompat;
@@ -36,7 +34,6 @@ class BreadcrumbsAdapter extends RecyclerView.Adapter<BreadcrumbsAdapter.ItemHol
 
     private BreadcrumbsView parent;
 
-    private int mPopupThemeId = -1;
     private int mTextColorSelected = -1;
     private int mtextColorUnSelected = -1;
     private int mTextSize = -1;
@@ -74,10 +71,6 @@ class BreadcrumbsAdapter extends RecyclerView.Adapter<BreadcrumbsAdapter.ItemHol
     public @Nullable
     BreadcrumbsCallback getCallback() {
         return this.callback;
-    }
-
-    public void setPopupThemeId(@IdRes int popupThemeId) {
-        this.mPopupThemeId = popupThemeId;
     }
 
     @NonNull
@@ -233,7 +226,7 @@ class BreadcrumbsAdapter extends RecyclerView.Adapter<BreadcrumbsAdapter.ItemHol
         }
 
         Context getPopupThemedContext() {
-            return mPopupThemeId != -1 ? new ContextThemeWrapper(getContext(), mPopupThemeId) : getContext();
+            return getContext();
         }
 
     }

@@ -7,6 +7,7 @@ import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +60,8 @@ public class BreadcrumbsView extends FrameLayout {
             mTextSizeCustom = a.getDimensionPixelSize(R.styleable.BreadcrumbsView_textSizeCustom, -1);
             isRtl = a.getBoolean(R.styleable.BreadcrumbsView_isRtl, false);
             a.recycle();
+        } else {
+            Toast.makeText(context, "NO ATTRS :|", Toast.LENGTH_SHORT).show();
         }
 
         init();
