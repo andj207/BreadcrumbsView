@@ -29,9 +29,9 @@ public class BreadcrumbsView extends FrameLayout {
     /**
      * Popup Menu Theme Id
      */
-    private int mTextColorSelected = -1;
-    private int mTextColorUnSelected = -1;
-    private int mTextSizeCustom = -1;
+    private int mTextColorSelected = Integer.MAX_VALUE;
+    private int mTextColorUnSelected = Integer.MAX_VALUE;
+    private int mTextSizeCustom = Integer.MAX_VALUE;
     private boolean isRtl = false;
 
     private static final String KEY_SUPER_STATES = BuildConfig.APPLICATION_ID + ".superStates";
@@ -55,10 +55,10 @@ public class BreadcrumbsView extends FrameLayout {
     private void getCustomAttrs(Context context, AttributeSet attrs, int defStyle) {
         if (attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BreadcrumbsView, 0, 0);
-            mTextColorSelected = a.getColor(R.styleable.BreadcrumbsView_textColorSelected, -1);
-            mTextColorUnSelected = a.getColor(R.styleable.BreadcrumbsView_textColorUnSelected, -1);
-            mTextSizeCustom = a.getDimensionPixelSize(R.styleable.BreadcrumbsView_textSizeCustom, -1);
-            isRtl = a.getBoolean(R.styleable.BreadcrumbsView_isRtl, false);
+            mTextColorSelected = a.getColor(R.styleable.BreadcrumbsView_SelectedTextColor, Integer.MAX_VALUE);
+            mTextColorUnSelected = a.getColor(R.styleable.BreadcrumbsView_UnSelectedTextColor, Integer.MAX_VALUE);
+            mTextSizeCustom = a.getDimensionPixelSize(R.styleable.BreadcrumbsView_CustomTextSize, Integer.MAX_VALUE);
+            isRtl = a.getBoolean(R.styleable.BreadcrumbsView_IsRtl, false);
             a.recycle();
         } else {
             Toast.makeText(context, "NO ATTRS :|", Toast.LENGTH_SHORT).show();

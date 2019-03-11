@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         mBreadcrumbsView.setItems(new ArrayList<>(Arrays.asList(
                 BreadcrumbItem.createSimpleItem("Root Path")
         )));
+
         mBreadcrumbsView.setCallback(new DefaultBreadcrumbsCallback<BreadcrumbItem>() {
             @Override
             public void onNavigateBack(BreadcrumbItem item, int position) {

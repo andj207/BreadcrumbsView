@@ -2,10 +2,10 @@
 <resources>
 
     <declare-styleable name="BreadcrumbsView">
-        <attr name="textColorSelected"      format="reference|color" />
-        <attr name="textColorUnSelected"    format="reference|color" />
-        <attr name="textSizeCustom"         format="dimension" />
-        <attr name="isRtl"                  format="boolean" />
+        <attr name="SelectedTextColor"      format="reference" />
+        <attr name="UnSelectedTextColor"    format="reference" />
+        <attr name="CustomTextSize"         format="dimension" />
+        <attr name="IsRtl"                  format="boolean" />
     </declare-styleable>
 
 </resources>

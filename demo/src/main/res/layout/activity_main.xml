@@ -23,12 +23,11 @@
         <moe.feng.common.view.breadcrumbs.BreadcrumbsView
             android:id="@+id/breadcrumbs_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:isRtl="true"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:textColorSelected="@color/colorSelected"
-            app:textColorUnSelected="@color/colorUnSelected"
-            app:textSizeCustom="12sp" />
+            android:layout_height="56dp"
+            android:background="@color/colorPrimary"
+            app:CustomTextSize="12sp"
+            app:SelectedTextColor="@color/colorSelected"
+            app:UnSelectedTextColor="@color/colorUnSelected" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

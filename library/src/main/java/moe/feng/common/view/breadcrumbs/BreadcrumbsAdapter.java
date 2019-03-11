@@ -126,12 +126,12 @@ class BreadcrumbsAdapter extends RecyclerView.Adapter<BreadcrumbsAdapter.ItemHol
             button.setText(item.getSelectedItem().toString());
             button.setTextColor(ViewUtils.getColorFromAttr(getContext(), getAdapterPosition() == getItemCount() - 1 ? android.R.attr.textColorPrimary : android.R.attr.textColorSecondary));
 
-            if (mTextColorSelected != -1)
+            if (mTextColorSelected != Integer.MAX_VALUE)
                 button.setTextColor(getAdapterPosition() == getItemCount() - 1 ? mTextColorSelected : mtextColorUnSelected);
             else
                 button.setTextColor(ViewUtils.getColorFromAttr(getContext(), getAdapterPosition() == getItemCount() - 1 ? android.R.attr.textColorPrimary : android.R.attr.textColorSecondary));
 
-            if (mTextSize != -1)
+            if (mTextSize != Integer.MAX_VALUE)
                 button.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTextSize);
         }
     }
@@ -145,7 +145,7 @@ class BreadcrumbsAdapter extends RecyclerView.Adapter<BreadcrumbsAdapter.ItemHol
             super(itemView);
             Drawable normalDrawable = getContext().getResources().getDrawable(R.drawable.ic_fiber_manual_record_black_24dp);
             Drawable wrapDrawable = DrawableCompat.wrap(normalDrawable);
-            if (mtextColorUnSelected != -1)
+            if (mtextColorUnSelected != Integer.MAX_VALUE)
                 DrawableCompat.setTint(wrapDrawable, mtextColorUnSelected);
             else
                 DrawableCompat.setTint(wrapDrawable, ViewUtils.getColorFromAttr(getContext(), android.R.attr.textColorSecondary));
