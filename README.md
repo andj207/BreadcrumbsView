@@ -41,7 +41,7 @@ Add the dependency to your app modules:
 
 ```gradle
 dependencies {
-    	implementation 'com.github.HamidrezaAmz:BreadcrumbsView:0.2.4'
+    	implementation 'com.github.HamidrezaAmz:BreadcrumbsView:0.2.9'
 }
 ```
 
@@ -54,13 +54,12 @@ For example:
 ```xml
 <moe.feng.common.view.breadcrumbs.BreadcrumbsView
 	android:id="@+id/breadcrumbs_view"
-	android:layout_width="match_parent"
-	android:layout_height="?attr/actionBarSize"
-	app:popupTheme="@style/AppTheme.PopupOverlay"
-	app:textColorSelected="@color/colorSelected"
-        app:textColorUnSelected="@color/colorUnSelected"
-	app:isRtl="false"
-        app:textSizeCustom="12sp" />
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/colorPrimary"
+        app:CustomTextSize="12sp"
+        app:SelectedTextColor="@color/colorSelected"
+        app:UnSelectedTextColor="@color/colorUnSelected" />
 ```
 
 ### Add/Remove `BreadcrumbItem`
