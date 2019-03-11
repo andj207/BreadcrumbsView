@@ -28,7 +28,6 @@ public class BreadcrumbsView extends FrameLayout {
     /**
      * Popup Menu Theme Id
      */
-    private int mPopupThemeId = -1;
     private int mTextColorSelected = -1;
     private int mTextColorUnSelected = -1;
     private int mTextSizeCustom = -1;
@@ -37,20 +36,24 @@ public class BreadcrumbsView extends FrameLayout {
     private static final String KEY_SUPER_STATES = BuildConfig.APPLICATION_ID + ".superStates";
     private static final String KEY_BREADCRUMBS = BuildConfig.APPLICATION_ID + ".breadcrumbs";
 
-    public BreadcrumbsView(Context context) {
-        this(context, null);
+    public BreadcrumbsView(@NonNull Context context) {
+        super(context);
+        getCustomAttrs(context, null, 0);
     }
 
     public BreadcrumbsView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
+        getCustomAttrs(context, attrs, 0);
     }
 
     public BreadcrumbsView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        getCustomAttrs(context, attrs, defStyleAttr);
+    }
 
+    private void getCustomAttrs(Context context, AttributeSet attrs, int defStyle) {
         if (attrs != null) {
-            TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BreadcrumbsView, defStyleAttr, 0);
-            mPopupThemeId = a.getResourceId(R.styleable.BreadcrumbsView_popupTheme, -1);
+            TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BreadcrumbsView, 0, 0);
             mTextColorSelected = a.getColor(R.styleable.BreadcrumbsView_textColorSelected, -1);
             mTextColorUnSelected = a.getColor(R.styleable.BreadcrumbsView_textColorUnSelected, -1);
             mTextSizeCustom = a.getDimensionPixelSize(R.styleable.BreadcrumbsView_textSizeCustom, -1);
@@ -82,9 +85,6 @@ public class BreadcrumbsView extends FrameLayout {
         // Init Adapter
         if (mAdapter == null) {
             mAdapter = new BreadcrumbsAdapter(this, mTextColorSelected, mTextColorUnSelected, mTextSizeCustom);
-            if (mPopupThemeId != -1) {
-                mAdapter.setPopupThemeId(mPopupThemeId);
-            }
         }
         mRecyclerView.setAdapter(mAdapter);
     }
