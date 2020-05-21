@@ -1,16 +1,22 @@
 package moe.feng.common.view.breadcrumbs;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListPopupWindow;
+import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
@@ -21,7 +27,9 @@ import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.core.widget.PopupWindowCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import moe.feng.common.view.breadcrumbs.model.IBreadcrumbItem;
 
@@ -139,11 +147,12 @@ class BreadcrumbsAdapter extends RecyclerView.Adapter<BreadcrumbsAdapter.ItemHol
     class ArrowIconHolder extends ItemHolder<IBreadcrumbItem> {
 
         ImageButton imageButton;
-        ListPopupWindow popupWindow;
+        PopupWindow popupWindow;
+        ListView listView;
 
         ArrowIconHolder(View itemView) {
             super(itemView);
-            Drawable normalDrawable = getContext().getResources().getDrawable(R.drawable.ic_fiber_manual_record_black_24dp);
+            Drawable normalDrawable = getContext().getResources().getDrawable(R.drawable.ic_chevron_right_black_24dp);
             Drawable wrapDrawable = DrawableCompat.wrap(normalDrawable);
             if (mtextColorUnSelected != Integer.MAX_VALUE)
                 DrawableCompat.setTint(wrapDrawable, mtextColorUnSelected);
@@ -156,7 +165,7 @@ class BreadcrumbsAdapter extends RecyclerView.Adapter<BreadcrumbsAdapter.ItemHol
                 public void onClick(View view) {
                     if (item.hasMoreSelect()) {
                         try {
-                            popupWindow.show();
+                            popupWindow.showAsDropDown(view);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -178,31 +187,44 @@ class BreadcrumbsAdapter extends RecyclerView.Adapter<BreadcrumbsAdapter.ItemHol
                     list.add(map);
                 }
                 ListAdapter adapter = new SimpleAdapter(getPopupThemedContext(), list, R.layout.breadcrumbs_view_dropdown_item, new String[]{"text"}, new int[]{android.R.id.text1});
-                popupWindow.setAdapter(adapter);
-                popupWindow.setWidth(ViewUtils.measureContentWidth(getPopupThemedContext(), adapter));
-                // imageButton.setOnTouchListener(popupWindow.createDragToOpenListener(imageButton));
+                listView.setAdapter(adapter);
             } else {
                 imageButton.setOnTouchListener(null);
             }
         }
 
         private void createPopupWindow() {
-            popupWindow = new ListPopupWindow(getPopupThemedContext());
-            popupWindow.setAnchorView(imageButton);
-            popupWindow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            Context context = getPopupThemedContext();
+            popupWindow = new PopupWindow(context);
+            popupWindow.setFocusable(true);
+            popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+
+            ColorDrawable bg = new ColorDrawable();
+            TypedValue typedValue = new TypedValue();
+            context.getTheme().resolveAttribute(R.attr.colorBackgroundFloating, typedValue, true);
+
+            bg.setColor(typedValue.data);
+
+            popupWindow.setBackgroundDrawable(bg);
+
+            LinearLayout container = new LinearLayout(context);
+            container.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+
+            listView = new ListView(context);
+            listView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            listView.setDivider(null);
+
+            container.addView(listView);
+
+            popupWindow.setContentView(container);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     if (callback != null) {
                         callback.onItemChange(parent, getAdapterPosition() / 2, getItems().get(getAdapterPosition() / 2 + 1).getItems().get(i));
                         popupWindow.dismiss();
                     }
-                }
-            });
-            imageButton.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                @Override
-                public void onGlobalLayout() {
-                    popupWindow.setVerticalOffset(-imageButton.getMeasuredHeight() + DROPDOWN_OFFSET_Y_FIX);
-                    imageButton.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 }
             });
         }
